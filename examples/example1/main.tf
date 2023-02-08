@@ -15,11 +15,9 @@ provider "aws" {
 resource "aws_instance" "demo-web-1a" {
   instance_type="t2.micro"
   ami = "ami-08d7beea24979c6f8"
-}
 
-resource "aws_instance" "demo-web-1c" {
-  instance_type="t2.micro"
-  ami = "ami-08d7beea24979c6f8"
+  tags = {
+    Name = "demo-web-1a"
+  }
 }
-
 
