@@ -1,4 +1,7 @@
 terraform {
+  backend "local" {
+    path = "./../../terraform.tfstate"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -9,12 +12,15 @@ terraform {
 
 provider "aws" {
   profile = "admin-cli"
-  region  = "ap-northeast-1"
+  region  = var.aws_region
 }
 
 resource "aws_instance" "demo-web-1a" {
-  instance_type="t2.micro"
-  ami = "ami-08d7beea24979c6f8"
+  instance_type= var.instance_type
+  ami = var.ami_id
+  key_name = var.aws_key_pair
+
+  vpc_security_group_ids = [aws_security_group.demo-web-sg.id]
 
   tags = {
     Name = "demo-web-1a"
