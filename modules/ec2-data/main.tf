@@ -14,7 +14,7 @@ provider "aws" {
 
 resource "aws_instance" "demo-web-1a" {
   instance_type= var.instance_type
-  ami = var.ami_id
+  ami = data.aws_ami.latest_ami.id
   key_name = var.aws_key_pair
 
   vpc_security_group_ids = [aws_security_group.demo-web-sg.id]
