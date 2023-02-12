@@ -1,0 +1,7 @@
+module "ec2" {
+  source = "./modules/ec2-az"
+}
+
+output "ec2-instance-azs" {
+  value = module.ec2.instance_azs
+}
