@@ -4,6 +4,12 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.27"
     }
+
+    # 空资源提供器
+    null = {
+      source  = "hashicorp/null"
+      version = "3.1.0"
+    }
   }
 }
 
